@@ -1,94 +1,151 @@
 # Service Offerings - Brighter Websites
 
 **Version:** 1.0  
-**Last Updated:** 09/12/2025  
-**Purpose:** Comprehensive service structure for proposals, CAR mapping, content creation, and client recommendations
+**Last Updated:** December 10, 2024  
+**Purpose:** Technical specification for all service definitions, pricing, scope, and system integration
 
 ---
 
 ## Table of Contents
 
-1. [Service Philosophy](#service-philosophy)
-2. [Service Tiers Overview](#service-tiers-overview)
-3. [Service Component Catalogue](#service-component-catalogue)
-4. [Tier Definitions](#tier-definitions)
-5. [Service Pathways](#service-pathways)
-6. [Offer Positioning](#offer-positioning)
-7. [Proof Elements](#proof-elements)
+1. [Purpose & Scope](#purpose--scope)
+2. [Service Philosophy](#service-philosophy)
+3. [SEO & CRO Level Definitions](#seo--cro-level-definitions)
+4. [Service Component Catalogue](#service-component-catalogue)
+5. [Tier Definitions](#tier-definitions)
+6. [Standalone Services](#standalone-services)
+7. [Service Pathways](#service-pathways)
 8. [Pricing Strategy](#pricing-strategy)
-9. [Recommendation Logic](#recommendation-logic)
-10. [Content Mapping](#content-mapping)
+9. [CAR Integration](#car-integration)
+10. [System Integration Points](#system-integration-points)
+11. [Proof Library Integration](#proof-library-integration)
+
+---
+
+## Purpose & Scope
+
+### What This Document Defines
+
+Single source of truth for:
+- Service tier structure (Launch Fast, Grow Visibility, Scale Smarter)
+- Standalone service offerings
+- Pricing bands and payment structures
+- Technical scope per service
+- Integration with SCOS, CAR, and Proof Library
+
+### What This Document Does NOT Define
+
+- Proof Library mappings (see Proof Library in Airtable)
+- Standard page content sections (see Page-Structure.md)
+- Proposal templates (see Proposal-Templates/)
+- Client-specific customizations
+
+### Document Relationships
+
+```
+Service-Offerings.md (YOU ARE HERE)
+├── References: Proof Library (Airtable)
+├── References: Standard-Page-Structure.md
+├── Used by: CAR schema (service_pathway field)
+├── Used by: Proposal generation
+└── Used by: Website service page content
+```
 
 ---
 
 ## Service Philosophy
 
 ### Constraint-Based Delivery
-- Start with what client can support NOW
-- Build foundation that enables growth
-- Progress through tiers naturally as business grows
-- No theoretical "perfect state" roadmaps
+
+Start with what client can support NOW, not ideal roadmap. Build foundation that enables growth.
 
 ### Digital Growth Partner Model
-- NOT one-and-done projects
-- IS ongoing relationship with compounding value
-- Faster ROI → natural tier progression
+
+Ongoing relationship with compounding value, not one-and-done projects. Faster ROI → natural tier progression.
 
 ### Three-Tier Structure Rationale
+
 - **Launch Fast** (Entry): Get online quickly, AI-ready foundation
 - **Grow Visibility** (Growth): Strategic content, ALTC implementation
 - **Scale Smarter** (Premium): Full automation, advanced systems
 
+### Content Strategy
+
+**Standard approach:** AI-assisted content creation (faster, better SEO/CRO outcomes)
+
+**Premium charge:** Client insists on writing own content (+30% project cost)
+- Rationale: Slower timeline, quality not guaranteed, post-launch fixes likely
+
 ---
 
-## Service Tiers Overview
+## SEO & CRO Level Definitions
 
-| Tier | Price Range | Timeline | Primary Goal | Ideal For |
-|------|-------------|----------|--------------|-----------|
-| **Launch Fast** | $X,XXX - $X,XXX | 2-4 weeks | Get online with foundation | New businesses, website replacement |
-| **Grow Visibility** | $X,XXX - $X,XXX | 3-6 months | Build authority, attract customers | Established businesses ready for growth |
-| **Scale Smarter** | $XX,XXX+ | 6-12 months | Automate, scale, optimize | Growing businesses scaling operations |
+### SEO Levels
+
+| Level | Description | Typical Tier | What's Included |
+|-------|-------------|--------------|-----------------|
+| **Level 1: Foundation** | Basic technical SEO + structure | Launch Fast | Meta tags, XML sitemap, GSC/Bing setup, schema basics (LocalBusiness, Organization), image optimization |
+| **Level 2: Strategic** | ALTC implementation + competitive analysis | Grow Visibility | Level 1 + competitor analysis, persona mapping, service pathway mapping, ALTC cluster identification (1-2), advanced schema (Service, FAQ, Review), content maturity roadmap |
+| **Level 3: Comprehensive** | Full WFB/ALTC audit + 12-month strategy | Scale Smarter | Level 2 + complete competitor analysis, voice gap identification, full persona mapping, ALTC cluster identification (2-3), all schema types, quiz/calculator integration, 12-month implementation roadmap |
+
+### CRO Levels
+
+| Level | Description | Typical Tier | What's Included |
+|-------|-------------|--------------|-----------------|
+| **Level 1: Best Practice** | Design + basic tracking | Launch Fast | Strategic CTA placement (3 per page), mobile-first forms, trust signals, user pathway design, basic GA4 tracking |
+| **Level 2: Data-Informed** | Best practice + analytics-driven optimization | Grow Visibility | Level 1 + multiple conversion funnels by service, advanced form optimization, proof architecture, selector-based attribution, lead hierarchy tracking |
+| **Level 3: Partnership** | Ongoing optimization + testing | Scale Smarter | Level 2 + 3-month partnership, A/B testing, heat mapping, session recording, monthly optimization cycles, custom dashboards |
 
 ---
 
 ## Service Component Catalogue
 
-### Core Components (Building Blocks)
+### Core Technical Components
 
-**These are the atomic services that get combined into packages:**
+| Component | Description | Tier Availability | Internal Code |
+|-----------|-------------|-------------------|---------------|
+| WordPress Setup | WP + Breakdance + hosting | All | TECH-SETUP |
+| SCOS Basic | Performance, Business Info, Basic SEO | Launch Fast | SCOS-BASIC |
+| SCOS Pro | Content Strategy, Enhanced Analytics, FAQ | Grow+, Scale+ | SCOS-PRO |
+| SCOS Agency | White-label, Priority Support | Scale+ | SCOS-AGENCY |
+| Performance Optimization | LiteSpeed cache, image optimization | All | TECH-PERF |
+| Security & Backup | Basic security, backup config | All | TECH-SECURITY |
 
-#### 1. Technical Foundation Components
+### Content & Strategy Components
 
-| Component | Description | Tier Availability | Typical Duration | Internal Code |
-|-----------|-------------|-------------------|------------------|---------------|
-| **Website Setup** | WordPress + LiteSpeed hosting setup | All | 1-2 days | TECH-SETUP |
-| **Theme/Builder Implementation** | Breakdance builder, themeless setup | All | 2-3 days | TECH-THEME |
-| **Performance Optimization** | LiteSpeed cache, image optimization | All | 1-2 days | TECH-PERF |
-| **Basic SEO Foundation** | XML sitemaps, meta tags, schema basics | All | 1-2 days | SEO-BASIC |
-| **Analytics Setup** | GA4 tracking, basic conversion tracking | All | 1 day | ANALYTICS-BASIC |
-| **Forms & Conversion Points** | Contact forms, CTAs, lead capture | All | 1-2 days | CONV-FORMS |
-| **Security & Backup** | Basic security, backup configuration | All | 1 day | TECH-SECURITY |
+| Component | Description | Tier Availability | Internal Code |
+|-----------|-------------|-------------------|---------------|
+| AI-Assisted Content | 3,000-8,000+ words depending on tier | All | CONTENT-AI |
+| ALTC Fast Track | Quick audit + topic cluster roadmap | Launch Fast | ALTC-FAST |
+| ALTC Strategy | Full audit, competitor/persona/service mapping | Grow+, Scale+ | ALTC-FULL |
+| Blog Setup | Structure, categories, ALTC alignment | Grow+, Scale+ | CONTENT-BLOG |
+| Pillar Articles | Strategic long-form content (ALTC-aligned) | Scale+ | CONTENT-PILLAR |
+| Proof Integration | Case studies, testimonials, Trust Library | All (varies) | CONTENT-PROOF |
+| FAQ System | Structured CPT with schema | Grow+, Scale+ | CONTENT-FAQ |
 
-#### 2. Content & Strategy Components
+### Analytics & Tracking Components
 
-| Component | Description | Tier Availability | Typical Duration | Internal Code |
-|-----------|-------------|-------------------|------------------|---------------|
-| **Content Audit** | Existing content review and categorization | Grow+, Scale+ | 3-5 days | CONTENT-AUDIT |
-| **ALTC Strategy** | Topic cluster identification, positioning | Grow+, Scale+ | 5-10 days | ALTC-STRATEGY |
-| **Service Page Development** | Commercial page creation with CRO | All (varies) | 2-3 days per page | CONTENT-SERVICE |
-| **Blog Content Creation** | Strategic articles (ALTC-aligned) | Grow+, Scale+ | 3-5 days per article | CONTENT-BLOG |
-| **Proof Integration** | Case studies, testimonials, data visualization | Grow+, Scale+ | 2-3 days | CONTENT-PROOF |
-| **FAQ System** | Structured FAQ with schema | Grow+, Scale+ | 2-3 days | CONTENT-FAQ |
+| Component | Description | Tier Availability | Internal Code |
+|-----------|-------------|-------------------|---------------|
+| GA4 Basic | Basic tracking + form submissions | Launch Fast | ANALYTICS-BASIC |
+| GA4 Mid-Level | Selector-based attribution + lead hierarchy | Grow Visibility | ANALYTICS-MID |
+| GA4 Full | Complete custom tracking + dashboard | Scale Smarter | ANALYTICS-FULL |
 
-#### 3. Advanced/Automation Components
+### Local Visibility Components
 
-| Component | Description | Tier Availability | Typical Duration | Internal Code |
-|-----------|-------------|-------------------|------------------|---------------|
-| **Social Amplification Loop** | Automated content distribution | Scale+ | 5-7 days | AUTO-SOCIAL |
-| **Advanced Analytics** | Enhanced tracking, lead hierarchy | Scale+ | 3-5 days | ANALYTICS-ADV |
-| **CAR Implementation** | Content Architecture Records per post | Scale+ | 2-3 days setup | SCOS-CAR |
-| **Custom Development** | Bespoke features/modules | Scale+ | Varies | DEV-CUSTOM |
-| **Strategic Consulting** | Ongoing strategy sessions | Scale+ | Monthly | CONSULT-STRAT |
+| Component | Description | Tier Availability | Internal Code |
+|-----------|-------------|-------------------|---------------|
+| GMB Optimization | Profile setup + optimization | Grow+, Scale+ | LOCAL-GMB |
+| Directory Submissions (10) | Australian directories | Grow Visibility | LOCAL-DIR-10 |
+| Directory Submissions (15) | Comprehensive coverage | Scale Smarter | LOCAL-DIR-15 |
+
+### Automation Components
+
+| Component | Description | Tier Availability | Internal Code |
+|-----------|-------------|-------------------|---------------|
+| Social Amplification Loop | Automated content distribution | Scale+ | AUTO-SOCIAL |
+| Email Automation | Email platform + workflows | Scale+ | AUTO-EMAIL |
+| Custom Integrations | Booking, CRM, custom features | Add-on | DEV-CUSTOM |
 
 ---
 
@@ -96,407 +153,434 @@
 
 ### Launch Fast (Entry Tier)
 
-**What's Included (Base Package):**
+**Price:** $3,500 base  
+**Timeline:** 2-3 weeks  
+**URL:** /services/launch/
 
-| Component | Details | Deliverable |
-|-----------|---------|-------------|
-| Website Setup | WordPress + LiteSpeed hosting | Live website |
-| Theme Implementation | Breakdance builder configured | Editable template |
-| Core Pages | Home, About, Services (3-5), Contact | 5-7 pages |
-| Performance | LiteSpeed cache, basic optimization | < 2s load time |
-| Basic SEO | XML sitemap, meta tags, basic schema | Search-ready |
-| Analytics | GA4 setup, basic tracking | Dashboard access |
-| Forms | Contact form, lead capture | Lead generation |
-| Training | Client handover, basic editing | Documentation |
+#### Technical Specifications
 
-**Common Add-ons:**
-- Additional service pages (+$XXX per page)
-- Logo/branding design (+$XXX)
-- Copywriting assistance (+$XXX)
-- Extra revisions (+$XXX)
+| Component | Specification |
+|-----------|---------------|
+| Pages | Up to 6 custom pages |
+| Content | AI-assisted, 3,000 words total |
+| Platform | WordPress + Breakdance + SCOS Basic |
+| Hosting | Domain + hosting + email (first year) |
+| SEO | Level 1 (Foundation) |
+| CRO | Level 1 (Best Practice) |
+| Analytics | GA4 basic custom tracking |
+| Support | 30 days post-launch |
 
-**Exclusions:**
-- Advanced Content strategy (keyword research, Full ALTC Audit and Implementation)
-- Blog setup
-- Social media integration
-- Advanced automation
-- Ongoing support (offered separately)
+#### WFB Pillar Implementation
+
+**Strong foundations in:**
+- Pillar 1: Technical Foundations (Basic)
+- Pillar 2: Conversion Infrastructure (Basic)
+- Pillar 3: Content Strategy (ALTC Fast Track roadmap)
+
+**Getting started with:**
+- Pillar 4: Social Amplification (account setup only, no posting)
+
+#### Target Client Profile
+
+- New businesses needing online presence
+- Website replacement required
+- Budget-conscious (< $5K budget)
+- Need site within 2-3 weeks
+
+#### Natural Progression Path
+
+Launch Fast → (3-6 months) → Grow Visibility
+
+#### SCOS Module Requirements
+
+- Performance module (enabled)
+- Business Info module (enabled)
+- Basic SEO module (enabled)
+- Basic Analytics module (enabled)
 
 ---
 
 ### Grow Visibility (Growth Tier)
 
-**What's Included (Base Package):**
+**Price:** $4,800 base  
+**Timeline:** 3-4 weeks  
+**URL:** /services/grow/
 
-**Everything in Launch Fast, PLUS:**
+#### Technical Specifications
 
-| Component | Details | Deliverable |
-|-----------|---------|-------------|
-| Content Audit | Review existing content/competitors | Audit report |
-| ALTC Strategy | Topic cluster identification, 30-min Fast Track | Strategy document |
-| Service Pages (Enhanced) | CRO-optimized with proof integration | 5-7 optimized pages |
-| Blog Setup | Blog structure, categories, ALTC alignment | Content hub |
-| Initial Content | 4-6 strategic blog articles (ALTC-aligned) | Published articles |
-| FAQ System | Structured FAQ with schema | FAQ hub |
-| Proof Integration | Case studies, testimonials strategically placed | Proof elements live |
-| Enhanced Analytics | Lead hierarchy, enhanced tracking | Advanced tracking |
-| SEO Foundation (Enhanced) | Comprehensive schema, advanced meta | Full SEO setup |
-| 3-Month Support | Email support, minor updates | Ongoing access |
+| Component | Specification |
+|-----------|---------------|
+| Pages | Up to 10 custom pages + blog |
+| Content | AI-assisted, 5,000 words total |
+| Platform | WordPress + Breakdance + SCOS Pro |
+| Hosting | Domain + hosting + email (first year) |
+| SEO | Level 2 (Strategic - ALTC implementation) |
+| CRO | Level 2 (Data-Informed) |
+| Analytics | GA4 mid-level (selector-based attribution) |
+| Local | GMB + 10 directories |
+| Support | 60 days post-launch |
 
-**Common Add-ons:**
-- Additional blog articles (+$XXX per article)
-- Case study development (+$XXX per case study)
-- Local SEO (GMB optimization) (+$XXX)
-- Email marketing setup (+$XXX)
-- Extended support (6-12 months) (+$XXX/month)
+#### WFB Pillar Implementation
 
-**Exclusions:**
-- Social Amplification Loop (manual posting only)
-- Advanced automation
-- Custom development
-- CAR/CAM implementation
+**Strong foundations in:**
+- Pillar 1: Technical Foundations (Pro)
+- Pillar 2: Conversion Infrastructure (Pro)
+- Pillar 3: Content Strategy (ALTC implementation)
+
+**Getting started with:**
+- Pillar 4: Social Amplification (setup, not execution)
+
+#### Target Client Profile
+
+- Established businesses (1-3+ years)
+- Ready for strategic growth
+- Have proof to leverage (testimonials, case studies)
+- Competitive market requiring differentiation
+
+#### Natural Progression Path
+
+Grow Visibility → (6-12 months) → Scale Smarter OR Growth Partnership (ongoing)
+
+#### SCOS Module Requirements
+
+- All Basic modules (enabled)
+- Content Strategy module (enabled)
+- Enhanced Analytics module (enabled)
+- FAQ System module (enabled)
+- Social Amplification module (setup only)
 
 ---
 
 ### Scale Smarter (Premium Tier)
 
-**What's Included (Base Package):**
+**Price:** $6,500 base  
+**Timeline:** 4-6 weeks initial + 3-month partnership  
+**URL:** /services/scale/
 
-**Everything in Grow Visibility, PLUS:**
+#### Technical Specifications
 
-| Component | Details | Deliverable |
-|-----------|---------|-------------|
-| Full ALTC Implementation | Deep strategy, multiple clusters | Complete ALTC map |
-| CAR per Post | Content Architecture Records | Machine-readable strategy |
-| Social Amplification Loop | Automated content distribution (Make.com) | Automated workflow |
-| Advanced Analytics | Selector-based CRO, lead hierarchy | Complete attribution |
-| Custom Development | Bespoke features as needed | Custom modules |
-| Strategic Consulting | Monthly strategy sessions | Ongoing guidance |
-| Content Velocity | 8-12 articles/month | Consistent publishing |
-| Performance Optimization | Advanced CRO, conversion optimization | Optimized funnel |
-| 12-Month Partnership | Priority support, unlimited minor updates | Partnership agreement |
+| Component | Specification |
+|-----------|---------------|
+| Pages | Unlimited pages + full blog |
+| Content | AI-assisted, 8,000+ words + 3-6 pillar articles |
+| Platform | WordPress + Breakdance + SCOS Pro + Agency features |
+| Hosting | Domain + hosting + email (first year) |
+| SEO | Level 3 (Comprehensive - full WFB/ALTC audit) |
+| CRO | Level 3 (Partnership - 3 months optimization) |
+| Analytics | GA4 full tracking + custom dashboard |
+| Local | GMB + 15 directories |
+| Automation | Choice: Email OR Social Amplification Loop |
+| Support | 90 days + monthly strategy calls (during partnership) |
 
-**Common Add-ons:**
-- White paper development (+$X,XXX)
-- Certification/course platform (+$X,XXX)
-- Multi-site management (+$XXX/month per site)
-- Agency white-label (+$XXX/month)
+#### WFB Pillar Implementation
 
-**Exclusions:**
-- Paid advertising management (can recommend partners)
-- Email marketing execution (setup only)
+**All 5 pillars implemented:**
+- Pillar 1: Technical Foundations (Pro)
+- Pillar 2: Conversion Infrastructure (Pro)
+- Pillar 3: Content Strategy (Full ALTC)
+- Pillar 4: Social Amplification (Email OR Social - client choice)
+- Pillar 5: Compounding Systems (3-month partnership focus)
+
+#### Target Client Profile
+
+- $500K+ revenue
+- Proven product-market fit
+- Ready to scale systematically
+- Need infrastructure not hustle
+
+#### Natural Progression Path
+
+Scale Smarter (3-month partnership) → Growth Partnership (ongoing retainer)
+
+#### SCOS Module Requirements
+
+- All Pro modules (enabled)
+- Advanced Analytics (enabled)
+- Social Amplification OR Email Automation (client choice)
+- CAR implementation (per post)
+- CAM (site-wide intelligence)
+
+---
+
+## Standalone Services
+
+### Website Design
+
+**URL:** /services/web-design/
+
+**Service Type:** Core offering (part of all tiers)
+
+**Standalone Scope:** Custom WordPress website design and development
+
+**When Sold Standalone:** Rarely - typically part of tier packages
+
+**Related Tiers:** Launch Fast, Grow Visibility, Scale Smarter (see tier definitions for full scope)
+
+**Key Differentiators:**
+- Themeless WordPress (Breakdance builder)
+- Mobile-responsive by default
+- SCOS integration (tier-dependent)
+- Performance-optimized (< 2s load time)
+
+---
+
+### Search Visibility (SEO)
+
+**URL:** /services/seo/
+
+**Service Type:** Ongoing retainer or tier component
+
+**Standalone Pricing:** $1,800-$2,500/month (3-month minimum)
+
+**Standalone Scope:**
+- ALTC implementation (positioning-first methodology)
+- Technical SEO foundations
+- Content strategy and creation
+- Local SEO (GMB optimization + directories)
+- Monthly reporting and strategy calls
+
+**Related Tiers:** 
+- Grow Visibility (includes SEO Level 2)
+- Scale Smarter (includes SEO Level 3)
+
+**When Recommended Standalone:** Client has existing website needing visibility boost
+
+---
+
+### Conversion Design (Lead Generation/CRO)
+
+**URL:** /services/more-leads/
+
+**Service Type:** Ongoing retainer or tier component
+
+**Standalone Pricing:** $1,200-$1,800/month (3-month minimum)
+
+**Standalone Scope:**
+- CRO audit (analytics, heatmaps, user flow)
+- Form optimization + testing
+- CTA strategy + implementation
+- Trust signals enhancement
+- Monthly optimization cycles
+
+**Related Tiers:**
+- All tiers include CRO (level varies)
+- Scale Smarter includes CRO Level 3 (partnership)
+
+**When Recommended Standalone:** Site has traffic but low conversions
+
+---
+
+### Partner Collaboration
+
+**URL:** /services/collab-delivery/
+
+**Service Type:** White-label or agency partnership
+
+**Pricing:** Custom quoted (project-based or retainer)
+
+**Scope:**
+- Web design execution for agencies
+- Technical implementation support
+- Strategic consulting
+- Ongoing partnership arrangements
+
+**Typical Use Cases:**
+- Agency needs technical implementation
+- In-house team needs specialized expertise
+- White-label website delivery
+
+---
+
+### Managed WP Hosting
+
+**URL:** /services/managed-hosting/
+
+**Service Type:** Ongoing hosting + maintenance
+
+**Pricing:** $120-$150/month (Care Plan)
+
+**Scope:**
+- VPS hosting management (CyberPanel + LiteSpeed)
+- Performance optimization
+- Security + backups
+- Email hosting
+- Domain management
+- Priority technical support
+
+**Included in Tiers:** First year only (domain + hosting + email)
+
+**After First Year:** Client chooses hosting continuation or transfers elsewhere
+
+---
+
+### eCommerce Website Design
+
+**URL:** /services/ecommerce/
+
+**Service Type:** Tier add-on or custom project
+
+**Pricing:** Growth tier base + eCommerce add-on ($400-$2,000 depending on complexity)
+
+**Scope:**
+- WooCommerce setup OR custom quote forms (eCommerce-light)
+- Product/service architecture
+- Payment integration (Stripe, PayPal, invoicing)
+- Inventory management (if needed)
+- Order management workflows
+
+**Typical Engagement:** Growth tier + eCommerce customization
+
+---
+
+### Social Amplification (SMM)
+
+**URL:** /services/social/
+
+**Service Type:** Automation setup or ongoing management
+
+**Pricing:** 
+- Setup: Included in Scale Smarter
+- Ongoing: Part of Growth Partnership retainer
+
+**Scope:**
+- Content repurposing (blog → social platforms)
+- Platform posting automation (Make.com workflows)
+- YOURLS shortlinks + automated UTM parameters
+- Platform-specific optimization (Facebook, LinkedIn, Twitter, Instagram, GMB)
+
+**What's NOT Included:** Original content creation (repurposes existing website content)
 
 ---
 
 ## Service Pathways
 
 ### Customer Journey Mapping
-Entry Point → Core Service → Premium → Retention → Upsell
+
+```
+Entry Point → Core Service → Growth → Scale → Retention
+```
 
 #### Pathway 1: New Business (No Website)
-Launch Fast
-↓ (3-6 months, seeing results)
-Grow Visibility
-↓ (6-12 months, scaling)
-Scale Smarter
-↓ (ongoing)
-Retained Partnership
+
+```
+Launch Fast 
+    ↓ (3-6 months, seeing results)
+Grow Visibility 
+    ↓ (6-12 months, scaling)
+Scale Smarter 
+    ↓ (ongoing)
+Growth Partnership (retainer)
+```
 
 #### Pathway 2: Existing Website (Needs Improvement)
-Audit + Strategy Session (Free/Low-cost)
-↓
+
+```
+Free Audit + Strategy Session
+    ↓
 Grow Visibility (skip Launch Fast)
-↓
+    ↓
 Scale Smarter
-↓
-Retained Partnership
+    ↓
+Growth Partnership
+```
 
 #### Pathway 3: Established Business (Ready to Scale)
-ALTC Fast Track ($599 audit)
-↓
-Scale Smarter (immediate)
-↓
-Retained Partnership
 
+```
+ALTC Fast Track Audit ($800)
+    ↓
+Scale Smarter (immediate entry)
+    ↓
+Growth Partnership
+```
 
 ### Cross-Sell Opportunities
 
 **From Launch Fast:**
-- Content strategy session (bridge to Grow)
-- Blog article package
-- Case study development
-- Training session
+- ALTC Fast Track session (bridge to Grow)
+- Blog article package (content addition)
+- Care Plan (ongoing support)
 
 **From Grow Visibility:**
-- Social automation upgrade
-- Advanced analytics
-- Additional content clusters
+- Social Amplification upgrade
+- Advanced analytics implementation
+- Additional ALTC clusters
 - White paper development
 
 **From Scale Smarter:**
 - Additional site management
-- Agency white-label
+- Agency white-label partnership
 - Certification platform
 - Custom tool development
 
 ---
 
-## Offer Positioning
-
-### For Each Tier: PAS + Details
-
----
-
-#### Launch Fast: Offer Positioning
-
-**Problem:**
-You need a website fast, but you're worried about:
-- Spending months and thousands on something that doesn't work
-- Getting a beautiful site that doesn't attract customers
-- Building on outdated tech that won't survive AI search changes
-- Not having time to learn complex systems
-
-**Agitate:**
-Most web designers focus on pretty designs, not business results. You end up with a site that looks good but doesn't show up in AI search, doesn't convert visitors, and needs expensive rebuilds every few years when tech changes.
-
-**Solution:**
-Launch Fast gets you online in 2-4 weeks with an AI-ready foundation built on modern infrastructure. Not just a website—a business asset that works from day one and grows with you.
-
-**Who It's For:**
-- New businesses needing to get online quickly
-- Existing businesses with outdated/broken websites
-- Budget-conscious businesses needing proven results, not experiments
-- Regional SMEs wanting local authority without national-level costs
-
-**How It Works:**
-1. **Discovery** (1 day): Understand your business, services, goals
-2. **Build** (1-2 weeks): Modern WordPress setup, professional design, core pages
-3. **Launch** (1 week): Testing, training, go live
-4. **Handover**: Full training, documentation, ongoing support option
-
-**Expected Outcomes:**
-- Live, professional website in 2-4 weeks
-- Show up in AI search results (ChatGPT, Perplexity, Google AI)
-- Mobile-friendly, fast-loading (< 2 seconds)
-- Lead capture ready (contact forms, CTAs)
-- Easy for you to update (with training)
-- Foundation ready for growth (can add ALTC strategy later)
-
-**Proof:**
-- [Proof Library: cite relevant Launch Fast case studies]
-- [Proof Library: site performance metrics]
-- [Proof Library: client testimonials - quick turnaround]
-
-**Investment:** $X,XXX - $X,XXX (payment plans available)
-
----
-
-#### Grow Visibility: Offer Positioning
-
-**Problem:**
-You have a website, but you're not getting found. You're competing against national players with bigger budgets. Generic "more content" advice isn't working because:
-- You don't have time for 20-40 hours of keyword research
-- Your competitors write about the exact same topics
-- You're not sure what makes you different
-- Traditional SEO feels like guesswork
-
-**Agitate:**
-Every day you're invisible is a day competitors are getting the customers you deserve. Generic content gets generic results. You need strategic positioning, not more blog posts about "industry trends."
-
-And with AI search replacing traditional Google, ranking #1 doesn't matter if AI doesn't cite you as THE authority.
-
-**Solution:**
-Grow Visibility implements the ALTC Framework (Authority-Led Topic Clusters) - our proprietary positioning-first methodology. Instead of copying competitors, we identify YOUR unique authority position, validate it with proof, and build strategic content that makes you THE choice, not A choice.
-
-**Who It's For:**
-- Established businesses with 1-3 years trading
-- Regional businesses competing against national players
-- Service providers needing proof-based differentiation
-- Businesses ready to invest in long-term authority (not quick fixes)
-- Companies with proof (case studies, results, testimonials) to leverage
-
-**How It Works:**
-1. **Audit Phase** (Week 1): Analyze your business, competitors, proof elements
-2. **ALTC Strategy** (Week 2): 30-minute Fast Track generates strategic positioning
-3. **Foundation Build** (Weeks 3-6): Service pages, proof integration, blog structure
-4. **Content Creation** (Weeks 7-12): 4-6 strategic articles proving your authority
-5. **Optimization** (Ongoing): Monitor, refine, scale what works
-
-**Expected Outcomes:**
-- Clear strategic positioning (what you're known for)
-- 4-6 authority-building articles published
-- Service pages optimized with proof (case studies, testimonials)
-- AI-ready content structure (citeable by ChatGPT, Perplexity)
-- Foundation for ongoing content strategy
-- Measurable traffic increase (20-50% in 3-6 months typical)
-- Lead quality improvement (attract right-fit customers)
-
-**Proof:**
-- [Proof Library: Guerrilla Steel - 80% AI voice share]
-- [Proof Library: Revenue growth case studies]
-- [Proof Library: ALTC methodology validation]
-- [Proof Library: September 2024 algorithm survival]
-
-**Investment:** $X,XXX - $X,XXX (includes 3-month support)
-
----
-
-#### Scale Smarter: Offer Positioning
-
-**Problem:**
-You're growing, but you're stuck in the business instead of working ON it:
-- Content creation is manual and time-consuming
-- Social media posting takes hours every week
-- You're not sure what content is actually driving results
-- Systems are fragmented (website, social, email don't talk to each other)
-- Growth feels chaotic, not systematic
-
-**Agitate:**
-You're one person (or small team) trying to do the work of a marketing department. Every hour spent on manual posting is an hour not spent serving customers or growing strategically. Your competitors with bigger teams are pulling ahead.
-
-And if you're succeeding DESPITE broken systems, imagine what's possible with the right infrastructure.
-
-**Solution:**
-Scale Smarter implements CAOS (Content Architecture OS) - the full system that turns your website into an automated growth engine. One strategic article becomes 12+ social posts automatically. Content strategy becomes machine-readable. Attribution tracking shows exactly what drives revenue.
-
-This is how Guerrilla Steel went from $500K to $1M—and is targeting $3M next year.
-
-**Who It's For:**
-- Businesses doing $500K+ revenue, ready to scale
-- Companies with proven product-market fit needing infrastructure
-- Business owners drowning in manual marketing tasks
-- Teams needing systems, not more hustle
-- Businesses that survived chaos and want resilience
-
-**How It Works:**
-1. **Deep Dive** (Weeks 1-2): Full audit, ALTC deep strategy, systems mapping
-2. **Infrastructure Build** (Weeks 3-8): CAR implementation, Social Amplification Loop, advanced analytics
-3. **Automation Deploy** (Weeks 9-12): Connect systems, test workflows, train team
-4. **Scale Phase** (Months 4-12): Strategic consulting, content velocity, optimization
-5. **Partnership** (Ongoing): Monthly strategy, priority support, continuous improvement
-
-**Expected Outcomes:**
-- Automated content distribution (1 blog post → 12+ social posts)
-- Machine-readable strategy (CAR per post, CAM site-wide)
-- Complete attribution (know what content drives revenue)
-- Time savings (10-15 hours/week on manual tasks)
-- Strategic clarity (dashboard shows what works)
-- Revenue growth (typical 2x in 12 months with ALTC + automation)
-- Algorithm resilience (survive updates like September 2024)
-
-**Proof:**
-- [Proof Library: Guerrilla Steel - $500K → $1M]
-- [Proof Library: Social Amplification Loop impact]
-- [Proof Library: September 2024 survival (77% failed, we grew)]
-- [Proof Library: Time savings metrics]
-- [Proof Library: Client "good problem" stories (too much demand)]
-
-**Investment:** $XX,XXX+ (12-month partnership, payment plans available)
-
----
-
-## Proof Elements
-
-### Mapping Proof Library to Services
-
-**From Proof Library → Service Tier:**
-
-| Claim ID | Claim Summary | Service | Anchor | Usage |
-|----------|---------------|---------|--------|-------|
-| GS-AI-VOICE-OCT-2024 | 80% AI voice share in 28 days | Grow Visibility, Scale Smarter | 1, 6 | Primary proof for ALTC effectiveness |
-| GS-REVENUE-2024 | $500K → $1M revenue growth | Scale Smarter | 1, 4 | Primary proof for Scale tier ROI |
-| SEPT-2024-SURVIVAL | Survived algorithm update (77% failed) | Grow Visibility, Scale Smarter | 4 | Authority |
-| ALTC-FRAMEWORK-ORIGIN | Developed ALTC 2022, validated 2024 | Grow Visibility | 4 | Thought leadership proof |
-
-**Usage in Proposals:**
-- Launch Fast: Focus on speed, foundation, basic results
-- Grow Visibility: Focus on ALTC case studies, authority proof
-- Scale Smarter: Focus on revenue growth, automation ROI
-
----
-
 ## Pricing Strategy
 
-### Price Ranges (Fill In Actual Numbers)
+### Price Ranges
 
-| Tier | Base Price | Typical Add-ons | Total Range |
-|------|------------|-----------------|-------------|
-| Launch Fast | $X,XXX | +$XXX - $X,XXX | $X,XXX - $X,XXX |
-| Grow Visibility | $X,XXX | +$X,XXX - $X,XXX | $X,XXX - $XX,XXX |
-| Scale Smarter | $XX,XXX | +$X,XXX - $XX,XXX | $XX,XXX - $XXX,XXX |
+| Tier/Service | Starting Price | Add-On Range | Total Range |
+|--------------|----------------|--------------|-------------|
+| Launch Fast | $3,500 | +$200-$1,000 | $3,500-$4,500 |
+| Grow Visibility | $4,800 | +$500-$2,000 | $4,800-$6,800 |
+| Scale Smarter | $6,500 | +$1,000-$3,000 | $6,500-$9,500 |
+| SEO (ongoing) | $1,800/mo | - | $1,800-$2,500/mo |
+| CRO (ongoing) | $1,200/mo | - | $1,200-$1,800/mo |
+| Managed Hosting | $120/mo | - | $120-$150/mo |
 
 ### Pricing Philosophy
-- Value-based (outcome focus), not hourly
-- Transparent (published ranges, not hidden)
-- Regional-appropriate (SME budgets, not enterprise)
-- Payment plans available (accessibility)
-- Retainer/ongoing preferred (partnership model)
 
-### Justification (Internal)
-- Launch Fast: 40-60 hours @ $XXX/hr equivalent
-- Grow Visibility: 80-120 hours @ $XXX/hr equivalent
-- Scale Smarter: 200+ hours @ $XXX/hr equivalent
+- **Value-based:** Outcome focus, not hourly
+- **Transparent:** Published ranges, not hidden pricing
+- **Regional-appropriate:** SME budgets, not enterprise pricing
+- **Payment plans available:** 50% deposit / 50% before launch
+- **Full payment discount:** Save 5% paying upfront
 
----
+### Payment Structure (Standard)
 
-## Recommendation Logic
+**Option 1: Full Payment (Recommended)**
+- Pay 100% at project start
+- Save 5% total project cost
+- Fastest timeline
 
-### For Quizzes/Assessments
+**Option 2: Milestone Payments**
+- 50% deposit at project start
+- 50% before launch
+- Standard timeline
 
-**Decision Tree:**
+### Client Content Premium Charge
 
+**If client insists on writing own content:**
+- +30% project cost
+- Extended timeline (depends on client delivery speed)
+- Risk disclaimer: SEO/CRO outcomes not guaranteed
 
-
-Q1: Do you have a website?
-→ No: Launch Fast (or Grow if budget allows)
-→ Yes: Q2
-Q2: Is your current website attracting customers?
-→ Yes, but want to scale: Scale Smarter
-→ Some, but not enough: Grow Visibility
-→ No/broken: Launch Fast (rebuild)
-Q3: What's your primary goal?
-→ Get online fast: Launch Fast
-→ Attract more customers: Grow Visibility
-→ Automate/scale existing success: Scale Smarter
-Q4: What's your budget?
-→ Under $X,XXX: Launch Fast
-→ $X,XXX - $XX,XXX: Grow Visibility
-→ $XX,XXX+: Scale Smarter
-Q5: Do you have proof/case studies?
-→ No: Launch Fast
-→ Some (1-3): Grow Visibility
-→ Yes (3+): Scale Smarter
-Q6: How hands-on do you want to be?
-→ Very (DIY after setup): Launch Fast
-→ Collaborative (strategic input): Grow Visibility
-→ Hands-off (trust experts): Scale Smarter
-
-
-### Scoring System
-
-Assign points based on answers, recommend tier:
-- 0-10 points: Launch Fast
-- 11-20 points: Grow Visibility
-- 21+ points: Scale Smarter
+**Rationale:** Slower delivery, quality control issues, post-launch fixes likely
 
 ---
 
-## Content Mapping
+## CAR Integration
 
-### For CAR Implementation
+### service_pathway Field Values
 
-**Service Pathway Field Values:**
+**Allowed values for CAR schema:**
 
+```json
 "service_pathway": [
   "Launch Fast",
   "Grow Visibility", 
   "Scale Smarter",
-  "ALTC Fast Track",
-  "Consulting",
-  "None (General Authority)"
+  "Website Design",
+  "Search Visibility",
+  "Conversion Design",
+  "Partner Collaboration",
+  "Managed WP Hosting",
+  "eCommerce",
+  "Social Amplification"
 ]
+```
 
-**Content → Service Mapping:**
+### Content → Service Mapping
 
 | Content Type | Primary Service | Secondary Service |
 |--------------|-----------------|-------------------|
@@ -505,28 +589,172 @@ Assign points based on answers, recommend tier:
 | Blog: Automation Strategies | Scale Smarter | - |
 | Service Page: Grow Visibility | Grow Visibility | - |
 | Case Study: Guerrilla Steel | Scale Smarter | Grow Visibility |
-| FAQ: General Website Questions | Launch Fast | - |
+| FAQ: Website Questions | Launch Fast | Website Design |
+
+### CAR Example
+
+```json
+{
+  "commercial": {
+    "service_pathway": "Grow Visibility",
+    "conversion_goal": "quote_request",
+    "secondary_goal": "newsletter_signup"
+  },
+  "authority_proof": {
+    "claims_used": [
+      {
+        "claim_id": "GS-AI-VOICE-OCT-2024",
+        "anchor": 1,
+        "weight": "primary"
+      }
+    ]
+  }
+}
+```
 
 ---
 
-## For Different Roles
+## System Integration Points
 
-### Sales/Proposals
-- Use: Offer Positioning (PAS), Proof Elements, Pricing
-- Focus: Outcomes, proof, clear next steps
+### Proof Library Integration
 
-### Designer
-- Use: Component Catalogue, Tier Definitions (what's included)
-- Focus: Deliverables, specifications, timelines
+**Service → Proof mapping stored in:** Airtable Proof Library
 
-### Developer
-- Use: Component Catalogue (internal codes), Technical components
-- Focus: Build requirements, integrations, dependencies
+**Relationship:** Services table → Claims table (many-to-many)
 
-### Content Writer
-- Use: Content Mapping, Proof Elements, Service Pathways
-- Focus: What content supports which services, proof to integrate
+**Query pattern:** "Show me all claims that support 'Grow Visibility' service"
+
+**See:** Proof Library documentation in Airtable
+
+### SCOS Module Requirements
+
+**Stored in:** SCOS Settings Manager
+
+**Module enablement per tier:**
+
+| Tier | Basic Modules | Pro Modules | Agency Modules |
+|------|---------------|-------------|----------------|
+| Launch Fast | ✓ | - | - |
+| Grow Visibility | ✓ | ✓ | - |
+| Scale Smarter | ✓ | ✓ | ✓ |
+
+**Module dependencies documented in:** SCOS Technical Overview
+
+### Proposal Generation
+
+**Template system:** Along (proposal delivery platform)
+
+**Reusable sections:** Each service has template block
+
+**Customization:** 80% templated, 20% client-specific
+
+**See:** Proposal-Templates/ directory
+
+### Website Service Pages
+
+**Standard page structure:** See Standard-Page-Structure.md
+
+**Content generation workflow:**
+1. Pull service definition from this document
+2. Pull proof claims from Proof Library (Airtable)
+3. Apply standard page structure
+4. Customize for client journey stage
 
 ---
 
-**End of Structure**
+## Proof Library Integration
+
+**Status:** Implemented in Airtable (Production)  
+**Documentation:** See [Proof Library - Airtable Implementation](proof-library-airtable-implementation.md)
+
+### Quick Reference
+
+**6 Tables:**
+1. **Claims** (Central hub) - Atomic, verifiable proof statements
+2. **Verification Artifacts** - Supporting evidence (screenshots, documents, data)
+3. **Usage Tracking** - Where claims are deployed (pages, channels)
+4. **ALTC Clusters** - Topic organization for authority positioning
+5. **Service Pathways** - Maps claims to service offerings
+6. **Progression Data** - Time-series metrics
+
+**Key Features:**
+- E-E-A-T framework integration (Experience, Expertise, Authoritativeness, Trustworthiness)
+- Authority Anchor mapping (1-8)
+- Automatic validation tracking (⚠️ warnings when >90 days old)
+- Central hub pattern (all tables link to Claims)
+
+**WordPress Integration:**
+- Airtable → JSON → WordPress cache (pull)
+- WordPress → Webhook → Airtable Usage Tracking (push)
+
+**For complete structure, field definitions, and sample data:** See [proof-library-airtable-implementation.md](proof-library-airtable-implementation.md)
+
+### Example: Generating "Grow Visibility" Service Page Content
+
+**Query Proof Library (Airtable):**
+```sql
+SELECT * FROM Claims 
+WHERE linked_service_pathway CONTAINS "Grow Visibility"
+AND claim_status = "active"
+AND eeat_strength = "high"
+```
+
+**Returns:**
+```json
+[
+  {
+    "claim_id": "GS-AI-VOICE-OCT-2024",
+    "claim_text": "Achieved 80% AI voice share in 28 days for Guerrilla Steel",
+    "proof_type": "case_study",
+    "eeat_dimension": "authoritativeness",
+    "eeat_strength": "high",
+    "authority_anchors": [1, 4, 6],
+    "linked_service_pathway": ["Grow Visibility", "Scale Smarter"],
+    "verification_artifacts": ["/wp-content/uploads/proof/gs-ai-voice-oct-2024.png"]
+  },
+  {
+    "claim_id": "ALTC-FRAMEWORK-ORIGIN-2022",
+    "claim_text": "Developed ALTC Framework in 2022, validated with real results 2024",
+    "proof_type": "methodology",
+    "eeat_dimension": "expertise",
+    "eeat_strength": "high",
+    "authority_anchors": [4],
+    "linked_service_pathway": ["Grow Visibility", "Scale Smarter"]
+  }
+]
+```
+
+**Usage in Service Page:**
+- Inject claims into "Proof" section (Standard Page Structure)
+- Set CAR: `service_pathway: "Grow Visibility"`
+- Set CAR: `claims_used: ["GS-AI-VOICE-OCT-2024" (primary), "ALTC-FRAMEWORK-ORIGIN-2022" (secondary)]`
+
+### Example: Proposal Generation for "Scale Smarter"
+
+**Claude Code workflow:**
+1. **Read:** `service-offerings-draft.md` (get tier definition, pricing, scope)
+2. **Query:** Airtable Proof Library (get claims for "Scale Smarter")
+3. **Read:** `Standard-Page-Structure.md` (get proposal structure)
+4. **Generate:** Customized proposal with:
+   - Service scope from this document
+   - Proof claims from Airtable
+   - Structure from page template
+   - Client-specific customizations (20%)
+
+---
+
+## Version Control
+
+**Current Version:** 1.0  
+**Last Updated:** December 10, 2024  
+**Next Review:** After 5 proposals using this structure
+
+**Change Log:**
+- v1.0: Initial service structure documentation
+- Tier naming locked: Launch Fast, Grow Visibility, Scale Smarter
+- SEO/CRO level definitions added
+- Integration points with Proof Library and SCOS defined
+
+---
+
+**End of Technical Specification**
