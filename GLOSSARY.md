@@ -1,6 +1,8 @@
 # Framework Glossary
 Canonical terminology reference
 
+**Use**: Quick Reference Glossary of Terms. Detailed Terminology Reference -   in brighter-frameworks-docs\Proprietary-Terminology-Reference.md Ensure both are updated when changes are made to naming.
+
 ## Canonical Terms
 
 ### SCOS (Strategic Content Operating System)

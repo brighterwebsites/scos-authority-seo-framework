@@ -1,7 +1,6 @@
 # Website-First Blueprint (WFB) Methodology
-**version** 0.1 (not fully reveiewed)
-
-**Last Updated**: December 4, 2024  
+**version** 1.0 
+**Last Updated**: 15/12/2025
 
 ## What It Is
 
@@ -118,9 +117,9 @@ Website-First Blueprint (METHODOLOGY)
 
 **The difference**: Traditional treats the website as a cost center. WFB treats it as an appreciating asset.
 
-## Content Engine Within WFB
+## Content Amplification Engine Within WFB
 
-The "Content Engine" is Pillar 4 (Channel Integration) executing on Pillar 3 (ALTC content):
+The "Content Amplification Engine" is Pillar 4 (Channel Integration) executing on Pillar 3 (ALTC content):
 
 - One ALTC blog post → 3 Topics for social
 - Each topic → 3-4 social posts (Learn → Engage → Action progression)  
@@ -154,7 +153,7 @@ The "Content Engine" is Pillar 4 (Channel Integration) executing on Pillar 3 (AL
 - Content strategy → ALTC Framework (WFB Pillar 3)
 - Proving expertise → ALTC Authority Anchors
 - What to write about → ALTC positioning-first approach
-- Social/email tactics → Content Engine (WFB Pillar 4)
+- Social/email tactics → Content Amplification Loop/Content Engine (WFB Pillar 4)
 
 ## Key Differentiators
 
@@ -169,6 +168,6 @@ The "Content Engine" is Pillar 4 (Channel Integration) executing on Pillar 3 (AL
 
 **WFB = How the entire system works**  
 **ALTC = What content strategy powers it**  
-**Content Engine = How content amplifies across channels**
+**Amplification Loop** how content gets amplified across channels**
 
 All three work together. The website is always the center.

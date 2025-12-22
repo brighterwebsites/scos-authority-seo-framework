@@ -1,27 +1,18 @@
-# SCOS Technical Overview
+# SCOS Technical Archticture Overview
 **version** 0.1 (not fully reveiewed)
 
 **Last Updated**: December 4, 2024  
 
 ## Strategic Content Operating System (SCOS)
+**An Implementation of Strategic Content Operating System (SCOS)**
+
+**→ For SCOS category definition**: See `SCOS-Conceptual-Overview.md`
 
 **Product Name**: CAOS  (Unnamed1 /Site Essentials Module (MU Plugin)  
 **Version**: 1.0.0 (in development)  
 **Architecture**: 4-layer modular system  
 **Status**: Production on 3 sites (legacy code), refactor in progress
 
----
-
-## Executive Summary
-
-**SCOS (Strategic Content Operating System)** is a category of opearting System that operationalizes the Website-First Blueprint (WFB) and Authority-Led Topic Clusters (ALTC) frameworks through integrated tools, automation, and performance-optimized architecture.
-
-**What makes it an "Operating System":**
-- Not just features - it's methodology + execution + intelligence + brain
-- Content Architecture Record (CAR) makes strategy machine-readable per-post
-- Content Authority Map (CAM) aggregates all CARs into strategic intelligence site-wide
-- Modular architecture with per-module toggles (disabled = code doesn't run)
-- MCP-first design enables AI agent integration
 
 **Core Innovation**: Every piece of content knows exactly what it's supposed to do strategically (via CAR), and the site-wide intelligence layer (CAM) keeps all AI tools calibrated.
 
@@ -565,6 +556,9 @@ class Social_MCP_Tool {
 
 **Toggles**: Per-feature toggleable
 
+**Future Planned**:
+- Site Monitoring
+
 ---
 
 ### Analytics Module
@@ -630,8 +624,9 @@ class Social_MCP_Tool {
 
 **Features**:
 - 27 business information fields
-- SEOPress schema integration
+- Local Business and Other Schema integration
 - Shortcodes for output
+- Generate Privacy Policy and Terms
 - Caching system
 
 **Fields**: Name, phone, email, address, hours, social profiles, etc.
@@ -661,7 +656,7 @@ class Social_MCP_Tool {
 
 ### Social Amplification Module
 **Tier**: Pro  
-**Status**: ✅ Production-ready  
+**Status**: ✅ MVP  
 **Dependencies**: Business Info
 
 **Features**:
@@ -680,6 +675,12 @@ class Social_MCP_Tool {
 - Automated UTM: `utm_source={platform}&utm_medium=social&utm_content={content_type}_link`
 - Breadcrumb-based shortlinks (e.g., `seo-signals-fb`)
 
+**Planned**:
+- Editable Prompts  
+- Breadcrumb-based shortlinks (e.g. Blog > SEO Signals  `seo-signals-fb`)
+- Gutenberg and Breakdance block for Breadcrumbs
+- Talking point, CTA "Spining" 
+- Usage Tracking integration with Proof Library/Airtable?
 ---
 
 ### Support Portal Module
@@ -727,6 +728,9 @@ class Social_MCP_Tool {
 - Services
 - Products
 
+**Taxonomies**
+- Pages: Page Types (might be replaced by ALTC Content Types)
+
 **Toggle**: Per post type
 
 ---
@@ -772,9 +776,9 @@ class Social_MCP_Tool {
 - Unified settings UI
 - WordPress Tweaks migrated (proof of concept)
 
-### Phase 2: SEO Sitemaps URGENT (Weeks 3-4) 🔄
+### Phase 2: SEO Sitemaps (COMPLETED) ✅
 - XML sitemap generation
-- Replace SEOPress on problem sites
+- Replace SEOPress sitemap on problem sites
 
 ### Phase 2B: Social Amplification (COMPLETED) ✅
 - REST API foundation
@@ -782,17 +786,31 @@ class Social_MCP_Tool {
 - YOURLS integration
 - MCP-ready architecture
 
-### Phase 3: High-Value Modules (Weeks 5-8)
-- FAQ System
-- Image Optimization
-- Business Info
-- Analytics
+### Phase 2C: Proof Library (Phase 1 Complete) ✅
+- Airtable Proof Library
+- Make.com Integration
 
-### Phase 4: Content Strategy (Weeks 9-12)
+Phase 2 (AFter Phase 4)
+- Proof Library API with Website
+- (Future) Proof Library as a Docker App
+
+### Phase 2D: Licensing (Phase 1 COMPLETED) ✅
+- Restricted MU plugin Use
+
+### Phase 4: ALTC/Content Modules (Weeks 9-12)
 - Content Strategy fields
 - ALTC system
 - Content analysis
 - CAR implementation
+
+### Phase 3: Core Modules (Weeks x)
+- Image Optimization (site Essentials)
+- Business Info (site essentials)
+
+### Phase 3: High-Value Modules (Weeks x)
+- FAQ System
+- Analytics
+- Site Monitoring Module
 
 ### Phase 5: Polish & Premium (Weeks 13-16)
 - Support portal
@@ -806,6 +824,7 @@ class Social_MCP_Tool {
 - Schema markup
 - Canonical URLs
 - SEOPress replacement complete
+
 
 ### Phase 7: MCP Integration (Future)
 - MCP server layer
@@ -930,20 +949,29 @@ class Social_MCP_Tool {
 - Certification program for implementers
 
 ---
-
 ## Related Documentation
 
 **Strategic Frameworks**:
-- Website-First Blueprint (WFB) Methodology
-- ALTC Framework Overview
-- ALTC Framework Definitions
-- ALTC Origin Story
+- Website-First Blueprint (WFB) Methodology  brighter-frameworks-docs\frameworks\WFB-Blueprint-Overview.md
+- ALTC Framework Definitions brighter-frameworks-docs\frameworks\ALTC-Framework-Definitions.md
+- ALTC Origin Story  00_BW_WFB_Implementation\Altc-origin-story-master.md
+- SCOS Conceptual Overview (this docuemnt)
 
 **Operational**:
-- Proprietary Terminology Reference
+- brighter-frameworks-docs\implementation\SCOS-architecture.md
+- Proprietary Terminology Reference brighter-frameworks-docs\Proprietary-Terminology-Reference.md
+- Glossary brighter-frameworks-docs\GLOSSARY.md
+- brighter-frameworks-docs\implementation\AI-First-Implementation-Reference.md
+- brighter-frameworks-docs\implementation\module-specifications\airtable-database\proof-library-airtable-implementation.md
 - Module Development Guide (TBD)
 - Settings Import/Export Guide (TBD)
 - API Documentation (TBD)
+
+**Technical**:
+- Folder \brighter-frameworks-docs\technical
+- brighter-frameworks-docs\technical\01-proof-library.md
+- brighter-frameworks-docs\technical\02-CAR-schema.md
+- brighter-frameworks-docs\technical\04-llm-txt-format.md
 
 ---
 

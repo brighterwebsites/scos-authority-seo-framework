@@ -2328,7 +2328,9 @@ add_action( 'wp_head', 'scos_output_ga4_dimensions', 1 );
 ## Related Documentation
 
 - [Proof Library Specification](01-proof-library.md)
-- [SCOS Technical Overview](../implementation/SCOS-architecture.md)
+- [SCOS Technical Architecture](../implementation/SCOS-architecture.md)
+- [SCOS Conceptual Overview](../implementation/SCOS-Conceptual-Overview.md)
+
 - [LLM.txt Format](04-llm-txt-format.md)
 - [Service Offerings](../business/service-offerings.md)
 - [ALTC Framework Overview](../frameworks/ALTC-Framework-Overview.md)

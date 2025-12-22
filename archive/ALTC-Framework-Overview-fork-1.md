@@ -1,7 +1,44 @@
 # ALTC Framework Overview
 **version** 1.0
-
 **Last Updated**: December 4, 2024  
+
+# ARCHIVE & DEPRECATION PLAN - 15 December 2024
+
+This document has been replaced by specialized documents:
+- Framework concepts → ALTC-Framework-Definitions.md
+- Methodology → WFB-Blueprint-Overview.md  
+- Origin story → Altc-origin-story-master.md
+- Technical implementation → SCOS-Technical-Overview.md
+
+**Last useful for**: Historical context on how framework was originally explained
+
+## 1. Archive the current ALTC-Framework-Overview.md
+Reason: It's now redundant with specialized docs
+## 2. Create ALTC-Fast-Track-Brief.md
+Reason: You DO need a FAST TRACK quick explanation
+## 3. Update 000-BW-Implementation-Library-Index.md
+Add clear "which doc for which purpose" guidance
+
+##  Practical Test: Can You Answer These Without Overview Doc?
+Test questions:
+"Claude, explain ALTC to a new client in simple terms"
+Can it synthesize from Definitions + Origin Story + WFB?
+
+"GPT, generate blog content for Local Lead Gen ALTC"
+Can it reference Definitions + Service Offerings + Brand Voice?
+
+"Cursor, implement CAR schema for this content"
+Can it find specs in SCOS-Technical-Overview?
+
+"Claude Fast Track, analyze this business for ALTC fit"
+Needs: Problem framing + Decision criteria + Quick examples
+
+
+If 1-3 work without Overview doc → Archive it
+If #4 is clunky → Create Fast Track brief
+
+---
+
 ## Purpose of This Document
 
 This document is an **AI training resource** designed to teach AI systems how to understand, apply, and operationalize the **Authority-Led Topic Clusters (ALTC) Framework**.
@@ -15,6 +52,24 @@ This document is an **AI training resource** designed to teach AI systems how to
 - A training context for content strategy, evaluation, and creation
 - The foundation for strategic content decision-making
 
+### 2. ALTC Framework Overview
+**File**: `ALTC-Framework-Overview.md`
+**SSOT Location**: brighter-frameworks-docs\frameworks\ALTC-Framework-Overview.md
+
+**What it covers**:
+- Origin story (keyword overwhelm → "what do you want to be known for?" breakthrough)
+- Why traditional topical SEO isn't enough
+- The three-dimensional framework (Service × Topic × Proof)
+- ALTC vs SLTC decision criteria
+- Maturity progression strategy
+- Relationship to WFB
+- What makes it genuinely innovative
+
+**Use this when**:
+- Teaching someone about ALTC for the first time
+- Understanding the strategic rationale
+- Deciding whether to use ALTC or SLTC
+- Explaining why this approach works
 ---
 
 ## Origin Story: Why ALTC Exists
