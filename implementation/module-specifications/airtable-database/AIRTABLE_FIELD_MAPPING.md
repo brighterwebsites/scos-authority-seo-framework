@@ -1,327 +1,138 @@
-# Airtable Field Mapping Reference
-**Last Updated**: 2025-12-19  
-**Status**: Ready for Implementation  
+# Airtable Field Mapping Reference (Updated)
+
+**Last Updated**: 2026-01-19
+**Status**: Updated to match current `$airtable_data` output
 **Related File**: `temp-drop-in-end-point-airtable.php`
 
 ---
 
 ## WordPress → Airtable Field Mapping
 
-### Basic Post Info
+### 1) Basic Post Info
 
-| Airtable Field | WordPress Source | Type | Notes |
-|----------------|------------------|------|-------|
-| Post ID | `$post_id` | Number | Primary key |
-| Title | `$post->post_title` | Text | Post title |
-| URL | `get_permalink($post_id)` | Text | Full URL |
-| Published Date | `get_the_date('Y-m-d')` | Date | ISO format |
-| Last Modified Date | `get_the_modified_date('Y-m-d')` | Date | ISO format |
-
----
-
-### ALTC Strategy Fields
-
-| Airtable Field | WordPress Meta Key | Type | Options/Notes |
-|----------------|-------------------|------|---------------|
-| Maturity Level | `bw_cont_maturity` | Single Select | Export, Professional, Thought Leader, etc. |
-| Content Intent | `bw_intent` | Single Select | Information, Commercial, etc. (11 types) |
-| Content Purpose | `bw_purpose` | Single Select | Pillar, Supporting, Authority, etc. (12 types) |
-| ALTC Cluster | `bw_primary_altc_id` | Linked Record | Taxonomy: `altc_strategic_lens` |
-| Topics | `bw_primary_topic_id` | Linked Record | Taxonomy: `altc_topic` |
-
-**Content Intent Options** (from code):
-- Information
-- Information Problem
-- Information Solution
-- Commercial
-- Commercial Decision Support
-- (+ 6 more - see `bw_cs_intent_options()` in `bw-content-strategy.php`)
-
-**Content Purpose Options** (from code):
-- Pillar
-- Supporting
-- Authority
-- Case Study
-- Resource Guide
-- Service Page
-- Product Page
-- (+ 5 more - see `bw_cs_purpose_options()` in `bw-content-strategy.php`)
+| Airtable Field     | WordPress Source                           | Type                 | Notes                                                         |
+| ------------------ | ------------------------------------------ | -------------------- | ------------------------------------------------------------- |
+| Post ID            | `$post_id`                                 | Number               | Primary key (WP post ID)                                      |
+| Title              | `$post->post_title`                        | Text                 | Post/page title                                               |
+| URL                | `get_permalink($post_id)`                  | Text                 | Full canonical permalink                                      |
+| Published Date     | `get_the_date('Y-m-d', $post_id)`          | Date                 | ISO date                                                      |
+| Last Modified Date | `get_the_modified_date('Y-m-d', $post_id)` | Date                 | ISO date                                                      |
+| PostType           | `$post->post_type`                         | Text / Single Select | You may want Single Select later (`post`, `page`, `kb`, etc.) |
+| PublishedStatus    | `$post->post_status`                       | Text / Single Select | Currently `publish` only (because you gate it)                |
 
 ---
 
-### Content Analysis
+### 2) Category / Taxonomy
 
-| Airtable Field | WordPress Meta Key | Type | Notes |
-|----------------|-------------------|------|-------|
-| Internal Links Out | `bw_internal_link_count` | Number | Count of outbound internal links |
-| Internal Links In | N/A | Number | Currently 0 - needs calculation |
-| Word Count | `bw_word_count` | Number | Content only (no headers/footers) |
+| Airtable Field | WordPress Source                                                   | Type          | Notes                    |
+| -------------- | ------------------------------------------------------------------ | ------------- | ------------------------ |
+| Category       | `wp_get_post_categories($post_id, ['fields' => 'names'])[0] ?? ''` | Single Select | First category name only |
 
----
-
-### Optimization & Status
-
-| Airtable Field | WordPress Meta Key | Type | Options/Notes |
-|----------------|-------------------|------|---------------|
-| Optimization Status | `_brt_opt_status` | Single Select | 14 states (see below) |
-| Index Status | `bw_index_status` | Text | 5 states (see below) |
-
-**Optimization Status Options** (14 states):
-- Content
-- SEO Basic
-- Conversion
-- Repurpose
-- (+ 10 more - see `bw_cs_opt_status_options()` in `bw-content-strategy.php`)
-
-**Index Status Options** (5 states):
-- See `bw_cs_index_status_options()` in `bw-content-strategy.php`
+> If you later want multiple categories, change to array or join text.
 
 ---
 
-### Content Fields
+### 3) Content Fields
 
-| Airtable Field | WordPress Source | Type | Notes |
-|----------------|------------------|------|-------|
-| TLDR | `field_689df9726f48c` (ACF) | Long Text | ACF custom field |
-| Excerpt | `$post->post_excerpt` | Long Text | Auto-generated if empty (55 words) |
-| MetaTitle | `_yoast_wpseo_title` OR `_seopress_titles_title` | Text | SEO meta title |
-| Meta Description | `_yoast_wpseo_metadesc` OR `_seopress_titles_desc` | Long Text | SEO meta description |
-| BreadCrumbs | `bw_breadcrumbs` | Long Text | Short title for YOURLS |
-| Content Notes | `bw_notes` | Long Text | ALTC/Content strategy notes |
+| Airtable Field | WordPress Source                                                       | Type      | Notes                              |
+| -------------- | ---------------------------------------------------------------------- | --------- | ---------------------------------- |
+| TLDR           | `get_post_meta($post_id, 'bw_tldr', true)`                             | Long Text | Updated from old ACF field mapping |
+| Excerpt        | `$post->post_excerpt ?: wp_trim_words($post->post_content, 55, '...')` | Long Text | Auto-generated fallback            |
 
 ---
 
-### Relationships
+### 4) ALTC Strategy Fields
 
-| Airtable Field | WordPress Meta Key | Type | Notes |
-|----------------|-------------------|------|-------|
-| Pillar Article | `bw_pillar_page_id` | Text | Post title of related pillar |
-| Category | WordPress category | Single Select | First category name |
+> **Important:** In the current implementation these are **sent as text** (term names), not linked record IDs.
 
----
-
-## Important Implementation Notes
-
-### 1. Linked Records (ALTC Cluster, Topics)
-
-**Current Implementation**:
-- Sends term names as strings
-- Example: "AI Citation Infrastructure", "Schema Optimization"
-
-**For True Airtable Linked Records**, you need ONE of:
-
-**Option A: Store Airtable Record IDs in WordPress**
-```php
-// Store Airtable record ID in term meta
-update_term_meta($term_id, 'airtable_record_id', 'recXXXXXXXXXXX');
-
-// Then send as array of record IDs
-'ALTC Cluster' => [get_term_meta($primary_altc_id, 'airtable_record_id', true)],
-'Topics' => [get_term_meta($primary_topic_id, 'airtable_record_id', true)],
-```
-
-**Option B: Use Airtable Typecast**
-```php
-// Add typecast parameter to API call
-$response = wp_remote_post('https://api.airtable.com/v0/appOqcQR79umbJJGP/Content?typecast=true', [
-    // ... rest of config
-]);
-```
-This auto-creates linked records by name if they don't exist.
+| Airtable Field  | WordPress Source                                    | Type          | Notes                                                         |
+| --------------- | --------------------------------------------------- | ------------- | ------------------------------------------------------------- |
+| ALTC Cluster    | `$altc_name`                                        | Text          | Derived from taxonomy term name (`altc_strategic_lens`)       |
+| Topics          | `$topic_name`                                       | Text          | Derived from taxonomy term name (`altc_topic`)                |
+| Maturity Level  | `get_post_meta($post_id, 'bw_cont_maturity', true)` | Single Select | Must match Airtable option exactly                            |
+| Content Intent  | `get_post_meta($post_id, 'bw_intent', true)`        | Single Select | Must match Airtable option exactly                            |
+| Content Purpose | `get_post_meta($post_id, 'bw_purpose', true)`       | Single Select | Must match Airtable option exactly                            |
+| Intent Goal   | `get_post_meta($post_id, 'bw_altc_notes', true)`    | Long Text     | **Updated key** (was previously `bw_notes` in your older doc) |
 
 ---
 
-### 2. Internal Links In (Backlinks)
+### 5) Relationships
 
-Currently set to `0`. To calculate:
+| Airtable Field  | WordPress Source                          | Type | Notes                                      |
+| --------------- | ----------------------------------------- | ---- | ------------------------------------------ |
+| Pillar          | `bw_pillar_page_id → get_the_title()`     | Text | Stores the *title* of the pillar post      |
+| Service Pathway | `bw_service_pathway_ID → get_the_title()` | Text | Stores the *title* of related pathway post |
 
-```php
-/**
- * Count internal backlinks to this post
- */
-function get_internal_backlinks_count($post_id) {
-    global $wpdb;
-    
-    $permalink = get_permalink($post_id);
-    $domain = parse_url($permalink, PHP_URL_HOST);
-    
-    // Search post content for links to this post
-    $count = $wpdb->get_var($wpdb->prepare("
-        SELECT COUNT(DISTINCT p.ID) 
-        FROM {$wpdb->posts} p
-        WHERE p.post_status = 'publish'
-        AND p.post_content LIKE %s
-        AND p.ID != %d
-    ", '%' . $wpdb->esc_like($permalink) . '%', $post_id));
-    
-    return (int) $count;
-}
-
-// Then use:
-'Internal Links In' => get_internal_backlinks_count($post_id),
-```
-
-**⚠️ Warning**: This query can be slow on large sites. Consider:
-- Caching results
-- Background processing
-- Incremental updates
+> If you want these as **Linked Records** in Airtable later, you’ll need to store Airtable record IDs (or query Airtable by Post ID).
 
 ---
 
-### 3. Duplicate Record Prevention
+### 6) Workflow / Planning
 
-**Current Implementation**: Creates NEW record each save
-
-**To UPDATE existing records instead**:
-
-```php
-// 1. Check if record exists
-$existing_record = get_post_meta($post_id, 'airtable_record_id', true);
-
-if ($existing_record) {
-    // 2. Use PATCH to update
-    $response = wp_remote_request(
-        'https://api.airtable.com/v0/appOqcQR79umbJJGP/Content/' . $existing_record,
-        [
-            'method' => 'PATCH',
-            'headers' => [
-                'Authorization' => 'Bearer YOUR_TOKEN',
-                'Content-Type' => 'application/json'
-            ],
-            'body' => json_encode(['fields' => $airtable_data])
-        ]
-    );
-} else {
-    // 3. Create new record (POST)
-    $response = wp_remote_post(/* ... */);
-    
-    // 4. Store Airtable record ID for future updates
-    if (!is_wp_error($response)) {
-        $body = json_decode(wp_remote_retrieve_body($response), true);
-        if (isset($body['id'])) {
-            update_post_meta($post_id, 'airtable_record_id', $body['id']);
-        }
-    }
-}
-```
+| Airtable Field     | WordPress Source                                | Type                     | Notes                                                                          |
+| ------------------ | ----------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------ |
+| Workflow Next Step | `get_post_meta($post_id, 'content_plan', true)` | Text / Single Select     | Consider making this Single Select if it’s a controlled set                    |
+| Workflow Progress  | `get_workflow_stage_as_list($post_id)`          | Multi Select / Long Text | Depends what the function returns (list vs string). Marking as function-backed |
 
 ---
 
-### 4. Field Type Validation
+### 7) Content Analysis Metrics
 
-**Airtable is strict about field types**:
-
-| Type | WordPress | Airtable Requirement |
-|------|-----------|---------------------|
-| Number | String "123" | Integer 123 |
-| Date | "2025-12-19" | ISO format: "2025-12-19" ✅ |
-| Checkbox | "yes" | Boolean true |
-| Select | Any string | Must match option exactly |
-
-**Current code handles**:
-- ✅ Numbers cast to `(int)`
-- ✅ Dates in ISO format
-- ✅ Empty values filtered out
-- ⚠️ Select options - ensure exact match with Airtable
+| Airtable Field     | WordPress Source                                                    | Type   | Notes                                                      |
+| ------------------ | ------------------------------------------------------------------- | ------ | ---------------------------------------------------------- |
+| Internal Links Count    | `(int) get_post_meta($post_id, 'bw_internal_link_count', true)`     | Number | Count of outbound internal links                           |
+| External Links Count |
+| Word Count         | `(int) get_post_meta($post_id, 'bw_word_count', true)`              | Number | Content length                                             |
+| H2 Count           | `(int) get_post_meta($post_id, 'bw_h2_count', true)`                | Number | Heading structure                                          |
+| Image Count        | `(int) get_post_meta($post_id, 'bw_image_count', true)`             | Number | Image count                                                |
+| Analysed Date      | `substr(get_post_meta($post_id, '_bw_last_analyzed', true), 0, 10)` | Date   | Extracted from MySQL datetime                              |
 
 ---
 
-### 5. Error Handling & Logging
+### 8) Link Arrays (Function-backed)
 
-**Current Implementation**:
-```php
-if (is_wp_error($response)) {
-    error_log('Airtable sync error: ' . $response->get_error_message());
-}
-```
-
-**Enhanced Error Handling**:
-```php
-if (is_wp_error($response)) {
-    error_log(sprintf(
-        'Airtable sync error for post %d: %s',
-        $post_id,
-        $response->get_error_message()
-    ));
-    return;
-}
-
-$status_code = wp_remote_retrieve_response_code($response);
-$body = wp_remote_retrieve_body($response);
-
-if ($status_code !== 200 && $status_code !== 201) {
-    error_log(sprintf(
-        'Airtable API error for post %d: Status %d, Response: %s',
-        $post_id,
-        $status_code,
-        $body
-    ));
-}
-```
+| Airtable Field             | WordPress Source                       | Type | Notes                                                    |
+| -------------------------- | -------------------------------------- | ---- | -------------------------------------------------------- |
+| Internal Links | `get_internal_links_as_ids($post_id)`  | Text | Function-backed “array” (currently comma-separated IDs)  |
+| External Links    | `get_external_links_as_urls($post_id)` | Text | Function-backed “array” (currently comma-separated URLs) |
 
 ---
 
-## Testing Checklist
+### 9) SEO / Indexing Fields
 
-Before deploying:
-
-- [ ] **API Token Valid**: Test API call in Postman/Insomnia
-- [ ] **Field Names Match**: Verify Airtable field names (case-sensitive!)
-- [ ] **Select Options Match**: Maturity Level, Intent, Purpose values exist in Airtable
-- [ ] **Linked Records Work**: Test ALTC Cluster and Topics linking
-- [ ] **Duplicate Prevention**: Verify updates vs. creates
-- [ ] **Error Logging**: Check error_log for failed syncs
-- [ ] **Performance**: Test on large content library (consider async)
-
----
-
-## Webhook Return Sync (Airtable → WordPress)
-
-The script includes a placeholder for bidirectional sync:
-
-```javascript
-// Airtable automation script (lines 46-62)
-fetch('https://brighterwebsites.com.au/wp-json/scos/v1/sync-car', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_WP_API_KEY'
-    },
-    body: JSON.stringify({
-        post_id: record.getCellValue('Post ID'),
-        car_updates: {
-            maturity_level: record.getCellValue('Maturity Level'),
-            priority: record.getCellValue('Priority')
-        }
-    })
-});
-```
-
-**To implement**:
-1. Register REST endpoint: `/wp-json/scos/v1/sync-car`
-2. Validate webhook signature
-3. Update WordPress post meta from Airtable data
-4. Prevent infinite loop (WP → Airtable → WP)
+| Airtable Field   | WordPress Source                                              | Type                 | Notes                                          |
+| ---------------- | ------------------------------------------------------------- | -------------------- | ---------------------------------------------- |
+| IndexTagSet      | `get_post_meta($post_id, '_seopress_robots_index', true)`     | Text / Checkbox      | SEOPress robot meta Yes/Blank) |
+| Canonical        | `get_post_meta($post_id, '_seopress_robots_canonical', true)` | URL                 | SEOPress |
+| MetaTitle        | `_yoast_wpseo_title` OR `_seopress_titles_title`              | Text                 | Fallback logic retained                        |
+| Meta Description | `_yoast_wpseo_metadesc` OR `_seopress_titles_desc`            | Long Text            | Fallback logic retained                        |
+| Short Link       | `get_post_meta($post_id, '_bw_breadcrumb', true)`             | Text                 | Your shortlink/breadcrumb text value           |
+| Breadcrumbs      | `get_post_meta($post_id, 'bw_breadcrumb_schema', true)`       | Long Text            | Text    |
+| Index Status     | `get_post_meta($post_id, 'bw_index_status', true)`            | Text / Single Select | Your internal 5-state index status             |
 
 ---
 
-## Related Documentation
+## Important Implementation Notes (Updated)
 
-- **CAR Schema**: `brighter-frameworks-docs/technical/02-CAR-schema.md`
-- **Technical Architecture**: `TECHNICAL_ARCHITECTURE.md` (lines 494-544)
-- **Module Reference**: `MODULE_REFERENCE.md` - Content Architecture Module
-- **Content Strategy Fields**: `brighter-core/includes/bw-content-strategy.php`
+### 1) Linked Records (ALTC Cluster, Topics)
 
----
+**Current Implementation**: sends **term names as text** (`$altc_name`, `$topic_name`).
 
-**Next Steps**:
-1. ✅ Field mapping complete
-2. 🔄 Test with single post
-3. 📋 Implement duplicate prevention
-4. 📋 Add backlinks calculation
-5. 📋 Set up bidirectional sync
+If you want **true Airtable Linked Records**, you still need one of:
+
+* **Store Airtable record IDs in WP term meta**, then send as `['recXXXX']`
+* or `typecast=true` (but only if you’re sending strings into a linked-record field and Airtable is set up to typecast-create)
+
+> Right now: your mapping doc should reflect that Airtable fields for **ALTC Cluster / Topics are Text**, not Linked Records.
 
 ---
 
-_Last updated: 2025-12-19_
+### 2) Field Type Strictness
 
+Your new mappings introduce more “controlled vocab” fields:
+
+* **Maturity Level / Intent / Purpose** (Single Select)
+* **Workflow Next Step** (is Single Select)
+* **Workflow Progress** (Multi Select needs to return an array)
+
+If Airtable is set to single select and WP sends a value not in options, Airtable will reject the record (422).

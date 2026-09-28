@@ -567,12 +567,12 @@ class Social_MCP_Tool {
 **Dependencies**: Optional: Business Info, Content Strategy
 
 **Features**:
-- GA4 tracking with consent management
+- GA4 tracking for "Australian Businesseses" 
 - Enhanced tracking (40+ selector rules)
 - Lead hierarchy (Hot/Warm/Cold classification)
 - Selector-Based CRO Attribution
 - Content strategy dimensions
-- Ad tag detection & alerting
+- Automatic Event Seeder 
 
 **Key Innovation**: Per-element attribution via CSS selectors
 
@@ -581,6 +581,9 @@ class Social_MCP_Tool {
 - Enhanced tracking rules
 - Content strategy dimensions
 
+**Future Enhancements**
+- Consent Mode with default granted state (toggle on/off)
+- User Consent Managment
 ---
 
 ### Content Strategy Module
