@@ -365,12 +365,15 @@ $allowed_ips = [
 | Maturity Level | `bw_cont_maturity` | Single select |
 | Content Intent | `bw_intent` | Single select |
 | Content Purpose | `bw_purpose` | Single select |
-| Optimization Status | `_brt_opt_status` | Single select |
+| Workflow Next Step | `content_plan` | Long text |
 | Index Status | `bw_index_status` | Text |
-| Content Notes | `bw_notes` | Long text |
-| BreadCrumbs | `bw_breadcrumbs` | Text |
+| Primary Intent Goal | `bw_altc_notes` | Long text |
+| BreadCrumbs | `bw_breadcrumb_schema` | Text |
 | Excerpt | `post_excerpt` | Long text |
-| TLDR | `field_689df9726f48c` | ACF field |
+| Short Link | `_bw_breadcrumb` | Long text |
+| TLDR | `bw_tldr` | Long text |
+
+_
 
 ### To Add More Fields
 
